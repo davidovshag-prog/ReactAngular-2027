@@ -3,9 +3,27 @@ const RegisterPage = () => {
         <>
             <div className="flex items-center justify-center px-4 mt-20">
                 <div className="w-full max-w-md p-8 space-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
-                    <h1 className="text-2xl font-bold text-center text-gray-900">Вхід</h1>
+                    <h1 className="text-2xl font-bold text-center text-gray-900">Реєстрація</h1>
 
                     <form className="space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Ім'я</label>
+                            <input
+                                type="First name"
+                                required
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Прізвище</label>
+                            <input
+                                type="Last name"
+                                required
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            />
+                        </div>
+
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input
@@ -19,6 +37,15 @@ const RegisterPage = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
                             <input
                                 type="password"
+                                required
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Підтвердження пароля</label>
+                            <input
+                                type="confirmpassword"
                                 required
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
