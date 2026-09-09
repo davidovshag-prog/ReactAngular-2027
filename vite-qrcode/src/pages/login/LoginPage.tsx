@@ -35,7 +35,6 @@ const LoginPage = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input
                                 type="email"
-                                required
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                                 {...register("email")}
                             />
@@ -46,7 +45,6 @@ const LoginPage = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
                             <input
                                 type="password"
-                                required
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                                 {...register("password")}
                             />
