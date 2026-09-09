@@ -1,4 +1,23 @@
+import {useForm} from "react-hook-form";
+import type {IRegisterType} from "./types.ts";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {registerSchema} from "./validate.ts";
+
 const RegisterPage = () => {
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {errors, isDirty}, //Якщо є помилки
+    } = useForm<IRegisterType>({
+        resolver: zodResolver(registerSchema)
+    });
+
+    const onSubmit = (data: IRegisterType) => {
+        console.log("Submit data server", data);
+    }
+
     return (
         <>
             <div className="flex items-center justify-center px-4 mt-20">
@@ -56,7 +75,7 @@ const RegisterPage = () => {
                             type="submit"
                             className="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-medium transition-colors"
                         >
-                            Увійти
+                            Зареєструватися
                         </button>
                     </form>
                 </div>
