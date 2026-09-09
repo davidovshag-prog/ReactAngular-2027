@@ -1,0 +1,11 @@
+import { z } from "zod";
+
+export const loginSchema = z
+    .object({
+        email: z
+            .email("Введіть коректний email"),
+
+        password: z
+            .string()
+            .min(8, "Пароль повинен містити мінімум 8 символів"),
+    });

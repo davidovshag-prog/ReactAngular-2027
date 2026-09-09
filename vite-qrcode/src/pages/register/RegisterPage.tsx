@@ -16,8 +16,8 @@ const RegisterPage = () => {
     const {
         register,
         handleSubmit,
-        reset,
-        formState: {errors, isDirty}, //Якщо є помилки
+        // reset,
+        formState: {errors, /*isDirty*/}, //Якщо є помилки
     } = useForm<IRegisterType>({
         resolver: zodResolver(registerSchema),
         defaultValues

@@ -1,18 +1,45 @@
+import type {ILoginType} from "./types.ts";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {loginSchema} from "./validate.ts";
+
 const LoginPage = () => {
+    const defaultValues : ILoginType ={
+        email: "",
+        password: ""
+    }
+
+    const {
+        register,
+        handleSubmit,
+        // reset,
+        formState: {errors, /*isDirty*/}, //Якщо є помилки
+    } = useForm<ILoginType>({
+        resolver: zodResolver(loginSchema),
+        defaultValues
+    });
+
+    const onSubmit = (data: ILoginType) => {
+        console.log("Submit data server", data);
+    }
+
+
     return (
         <>
             <div className="flex items-center justify-center px-4 mt-20">
                 <div className="w-full max-w-md p-8 space-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
                     <h1 className="text-2xl font-bold text-center text-gray-900">Вхід</h1>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input
                                 type="email"
                                 required
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                {...register("email")}
                             />
+                            {errors.email && (<div className={"text-red-700"}>{errors.email.message}</div>)}
                         </div>
 
                         <div>
@@ -21,7 +48,9 @@ const LoginPage = () => {
                                 type="password"
                                 required
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                {...register("password")}
                             />
+                            {errors.password && (<div className={"text-red-700"}>{errors.password.message}</div>)}
                         </div>
 
 
