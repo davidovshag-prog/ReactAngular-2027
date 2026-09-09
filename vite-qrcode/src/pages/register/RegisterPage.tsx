@@ -5,13 +5,22 @@ import {registerSchema} from "./validate.ts";
 
 const RegisterPage = () => {
 
+    const defaultValues : IRegisterType ={
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    }
+
     const {
         register,
         handleSubmit,
         reset,
         formState: {errors, isDirty}, //Якщо є помилки
     } = useForm<IRegisterType>({
-        resolver: zodResolver(registerSchema)
+        resolver: zodResolver(registerSchema),
+        defaultValues
     });
 
     const onSubmit = (data: IRegisterType) => {
@@ -20,60 +29,65 @@ const RegisterPage = () => {
 
     return (
         <>
-            <div className="flex items-center justify-center px-4 mt-20">
+            <div className="flex items-center justify-center px-4 mt-10">
                 <div className="w-full max-w-md p-8 space-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
                     <h1 className="text-2xl font-bold text-center text-gray-900">Реєстрація</h1>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Ім'я</label>
                             <input
                                 type="First name"
-                                required
+                                {...register("firstName")}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
+                            {errors.firstName && (<div className={"text-red-700"}>{errors.firstName.message}</div>)}
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Прізвище</label>
                             <input
                                 type="Last name"
-                                required
+                                {...register("lastName")}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
+                            {errors.lastName && (<div className={"text-red-700"}>{errors.lastName.message}</div>)}
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input
                                 type="email"
-                                required
+                                {...register("email")}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
+                            {errors.email && (<div className={"text-red-700"}>{errors.email.message}</div>)}
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
                             <input
                                 type="password"
-                                required
+                                {...register("password")}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
+                            {errors.password && (<div className={"text-red-700"}>{errors.password.message}</div>)}
                         </div>
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Підтвердження пароля</label>
                             <input
-                                type="confirmpassword"
-                                required
+                                type="password"
+                                {...register("confirmPassword")}
                                 className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                             />
+                            {errors.confirmPassword && (<div className={"text-red-700"}>{errors.confirmPassword.message}</div>)}
                         </div>
 
 
                         <button
                             type="submit"
-                            className="w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-medium transition-colors"
+                            className="w-full py-2.5 cursor-pointer rounded-lg bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-medium transition-colors"
                         >
                             Зареєструватися
                         </button>
