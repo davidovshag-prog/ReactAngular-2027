@@ -1,15 +1,14 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import type {IUser} from "./types.ts";
+import api from "../../api/axiosInstance.ts";
 
 const HomePage = () => {
 
-    const url = "http://localhost:5124/api/Users";
     //Список наших користувачів
     const [users, setUsers] = useState<IUser[]>([]);
     //Даний метод спрацьовує коли компонент зрендерився
     useEffect(() => {
-        axios.get<IUser[]>(url)
+        api.get<IUser[]>("/Users")
             .then(response =>
             {
                 console.log("Дані від сервера",response.data)
