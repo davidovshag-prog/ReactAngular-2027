@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import type {IRegisterType} from "./types.ts";
+import type {IRegisterType, IServerError} from "./types.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {registerSchema} from "./validate.ts";
 import {useState} from "react";
@@ -7,6 +7,7 @@ import api from "../../api/axiosInstance.ts";
 import type {ILoginResponse} from "../login/types.ts";
 import {useNavigate} from "react-router";
 import {useAuth} from "../../context/AuthContext.tsx";
+import axios from "axios";
 
 const RegisterPage = () => {
 
@@ -27,6 +28,7 @@ const RegisterPage = () => {
         register,
         handleSubmit,
         setValue, //Для запису даних у react-hook-form
+        setError,
         // reset,
         formState: {errors, /*isDirty*/}, //Якщо є помилки
     } = useForm<IRegisterType>({
@@ -52,6 +54,15 @@ const RegisterPage = () => {
             // console.log("Result login ", result);
         }
         catch (error) {
+            if(axios.isAxiosError<IServerError>(error))
+            {
+                const message = error.response?.data.error ?? "Щось пішло не так, спробуйте пізніше";
+                setError("root", { message });
+            }
+            else
+            {
+                setError("root", {message: "Невідома помилка"});
+            }
             console.log("У нас проблеми Хюстон", error);
             //setError("root", { message: "Дані вказано не вірно" }); //Записуємо помиклу, що дані вказано не вірно
         }
@@ -76,6 +87,9 @@ const RegisterPage = () => {
                 <div className="w-full max-w-md p-8 space-y-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
                     <h1 className="text-2xl font-bold text-center text-gray-900">Реєстрація</h1>
 
+                    {errors.root && (
+                        <p className="text-red-500 text-sm">{errors.root.message}</p>
+                    )}
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div className="flex flex-col items-center gap-3">
                             <div className="w-24 h-24 rounded-full overflow-hidden border border-gray-300 bg-gray-100 flex items-center justify-center">

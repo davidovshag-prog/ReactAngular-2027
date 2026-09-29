@@ -7,3 +7,7 @@ export interface IRegisterType
     confirmPassword: string;
     imageFile: File|null; //Зображення, яке обирає користувач при реєстрації
 }
+
+export interface IServerError {
+    error: string;
+}
