@@ -19,6 +19,26 @@ const Header = () => {
             >
                 31КН-QRCode
             </Link>
+            {
+                isAuthenticated &&
+                (
+                    <>
+                        <Link
+                            to="/qrcode/create"
+                            className="text-lg font-bold text-gray-900"
+                        >
+                            Додати QRCode
+                        </Link>
+                        <Link
+                            to="/qrcode"
+                            className="text-lg font-bold text-gray-900"
+                        >
+                            Список QRCode
+                        </Link>
+                    </>
+                )
+            }
+
 
             <div className="flex items-center gap-3">
                 {isAuthenticated ? (

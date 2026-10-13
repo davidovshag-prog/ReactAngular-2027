@@ -5,6 +5,8 @@ import {Route, Routes} from "react-router";
 import HomePage from "./pages/home/HomePage.tsx";
 import RegisterPage from "./pages/register/RegisterPage.tsx";
 import ProfilePage from "./pages/profile/ProfilePage.tsx";
+import CreateQrCodePage from "./pages/qrcodes/create/CreateQrCodePage.tsx";
+import QrCodeListPage from "./pages/qrcodes/list/QrCodeListPage.tsx";
 
 function App() {
 
@@ -17,6 +19,10 @@ function App() {
                     <Route path={"login"} element={<LoginPage/>}/>
                     <Route path={"register"} element={<RegisterPage/>}/>
                     <Route path={"profile"} element={<ProfilePage/>}/>
+                    <Route path={"qrcode"}>
+                        <Route index element={<QrCodeListPage/>}/>
+                        <Route path={"create"} element={<CreateQrCodePage/>}/>
+                    </Route>
                 </Route>
             </Routes>
         </>
