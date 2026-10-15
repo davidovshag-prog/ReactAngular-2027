@@ -24,12 +24,6 @@ const Header = () => {
                 (
                     <>
                         <Link
-                            to="/qrcode/create"
-                            className="text-lg font-bold text-gray-900"
-                        >
-                            Додати QRCode
-                        </Link>
-                        <Link
                             to="/qrcode"
                             className="text-lg font-bold text-gray-900"
                         >

@@ -7,6 +7,7 @@ import RegisterPage from "./pages/register/RegisterPage.tsx";
 import ProfilePage from "./pages/profile/ProfilePage.tsx";
 import CreateQrCodePage from "./pages/qrcodes/create/CreateQrCodePage.tsx";
 import QrCodeListPage from "./pages/qrcodes/list/QrCodeListPage.tsx";
+import EditQrCodePage from "./pages/qrcodes/edit/EditQrCodePage.tsx";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path={"qrcode"}>
                         <Route index element={<QrCodeListPage/>}/>
                         <Route path={"create"} element={<CreateQrCodePage/>}/>
+                        <Route path={"edit/:id"} element={<EditQrCodePage/>}/>
                     </Route>
                 </Route>
             </Routes>

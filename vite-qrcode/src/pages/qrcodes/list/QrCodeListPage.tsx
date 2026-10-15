@@ -43,7 +43,7 @@ const QrCodeListPage = () => {
             <div className="flex items-center justify-between mb-6">
                 <h1 className="text-2xl font-bold text-gray-900">QR-коди</h1>
                 <Link
-                    to="/qrcodes/create"
+                    to="/qrcode/create"
                     className="px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium transition-colors"
                 >
                     Створити
@@ -70,6 +70,7 @@ const QrCodeListPage = () => {
                             <th className="px-4 py-3 font-medium">Статус</th>
                             <th className="px-4 py-3 font-medium">Створено</th>
                             <th className="px-4 py-3 font-medium text-right">Скани</th>
+                            <th className="px-4 py-3 font-medium text-right">Дії</th>
                         </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
@@ -130,6 +131,14 @@ const QrCodeListPage = () => {
                                     </td>
                                     <td className="px-4 py-3 text-gray-600 whitespace-nowrap">{item.createAt}</td>
                                     <td className="px-4 py-3 text-right text-gray-900">{item.scanCount}</td>
+                                    <td className="px-4 py-3 text-right">
+                                        <Link
+                                            to={`/qrcode/edit/${item.id}`}
+                                            className="px-3 py-1.5 rounded-lg border border-indigo-200 text-indigo-600 hover:bg-indigo-50 text-xs font-medium transition-colors"
+                                        >
+                                            Редагувати
+                                        </Link>
+                                    </td>
                                 </tr>
                             );
                         })}

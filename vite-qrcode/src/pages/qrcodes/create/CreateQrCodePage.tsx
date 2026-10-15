@@ -30,7 +30,7 @@ const CreateQrCodePage = () => {
         try {
             // Бекенд очікує application/json: { name, targetUrl }
             await api.post("/QrCodes", data);
-            navigate("/"); //після створення переходимо на головну
+            navigate("/qrcode"); //після створення переходимо на головну
         }
         catch (error) {
             if (axios.isAxiosError<IServerError>(error)) {
