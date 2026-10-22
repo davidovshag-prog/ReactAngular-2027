@@ -61,4 +61,20 @@ For more information on using the Angular CLI, including detailed command refere
 # Кропки по налаштуванню проекта
 ``` Найпростіше згенерувати її командою
 ng generate environments
+
+ng generate service core/services/auth.service
+ng generate service core/services/token-storage.service
+
+ng g interface features/auth/models/login-request --type=model
+ng g interface features/auth/models/register-request --type=model
+ng g interface features/auth/models/auth-response --type=model
+
+ng g interface core/models/user --type=model
+
+ng g c features/auth/pages/login --type=component
+ng g c features/auth/pages/register --type=component
+
+ng g class shared/validators/password-match --type=validator --skip-tests
+
+
 ```
