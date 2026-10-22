@@ -9,3 +9,9 @@
 9.Вхід з використанням Google React TypeScript Vite.
 10.Профіль користувача. Розробка сторінки створення QRCode на React TypeScript
 11.CRUD операцій React TypeScript Vite взаємодія із сервером.
+12.Паганація і ефективне читання даних React TypeScript Vite.
+13.Пошук коритувачів, робота з url параметрами React TS Vite.
+14.CRUD по роботі з QRCodes React Vite TS.
+15.Використання бібліотек для роботи з QrCodes візуалізація і тестування React TS Vite.
+16.Основи Angular. Створення проекту налашутвання базових сторінок сайту.
+17.Розробка сторінки входу та реєстрації Angular.
